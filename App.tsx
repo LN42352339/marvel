@@ -1,21 +1,12 @@
-import React, {useState} from 'react';
-
-import {
-  TextInput,
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  StatusBar,
-} from 'react-native';
+import React from 'react';
+import {Text, View, Image, StyleSheet, StatusBar} from 'react-native';
 
 import Svg, {Path} from 'react-native-svg';
 import {Mycolors} from './src/presentation/theme/AppTheme';
+import {DefaultButton} from './src/presentation/components/DefaultButton';
+import {DefaultTextInput} from './src/presentation/components/DefaultTextInput';
 
 function App(): React.JSX.Element {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   return (
     <View style={styles.container}>
       {/* Barra de estado con fondo azul */}
@@ -46,32 +37,22 @@ function App(): React.JSX.Element {
           source={require('./assets/img/marvellogin.png')}
           style={styles.image2}
         />
-        <TextInput
-          style={styles.textInput}
-          placeholderTextColor={Mycolors.placeholder}
+        <DefaultTextInput
           placeholder="Correo Electrónico"
-          value={email} // Vincula el estado
-          onChangeText={setEmail} // Actualiza el estado al escribir
-          onFocus={() => setEmail('')} // Limpia el campo al enfocarse
+          image={require('./assets/img/email.png')}
         />
-        <TextInput
-          style={styles.textInput}
+
+        <DefaultTextInput
           placeholder="Contraseña"
-          placeholderTextColor={Mycolors.placeholder}
-          secureTextEntry={true}
-          value={password} // Vincula el estado
-          onChangeText={setPassword} // Actualiza el estado al escribir
-          onFocus={() => setPassword('')} // Limpia el campo al enfocarse
+          image={require('./assets/img/password.png')}
         />
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
-          <View></View>
-          <Text style={styles.buttonText}>Inicia sesión</Text>
-          <Image
-            source={require('./assets/img/escudo.png')}
-            // camerica.png icohulk aranaico
-            style={styles.buttonIcon}
-          />
-        </TouchableOpacity>
+
+        <DefaultButton
+          text="Inicia sesión"
+          onPress={() => {}}
+          // image={require('./assets/img/add.png')}
+        />
+
         <Text style={styles.textRegister}>REGISTRATE AHORA</Text>
       </View>
     </View>
@@ -123,37 +104,6 @@ const styles = StyleSheet.create({
     zIndex: 10, // Asegura que esté encima de otros elementos
   },
 
-  textInput: {
-    width: '90%',
-    borderBottomColor: Mycolors.placeholder,
-    borderBottomWidth: 1,
-    fontSize: 12,
-    marginBottom: 20,
-    padding: 2,
-    color: Mycolors.secondary,
-  },
-  button: {
-    width: '90%',
-    backgroundColor: '#3B4480',
-    height: 50,
-    marginTop: 20,
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    borderRadius: 8,
-    flexDirection: 'row',
-  },
-  buttonIcon: {
-    height: 40,
-    width: 40,
-    marginLeft: -140,
-  },
-  buttonText: {
-    fontSize: 15,
-    color: 'white',
-    textAlign: 'left',
-    width: '100%',
-    marginLeft: 60,
-  },
   textRegister: {
     width: '100%',
     fontSize: 9,
