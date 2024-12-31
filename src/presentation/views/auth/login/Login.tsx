@@ -1,16 +1,19 @@
 import React from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
-import {RootStackParamList} from '../../navigation/MainStackNavigator';
 import {Text, View, Image, StatusBar, TouchableOpacity} from 'react-native';
-import {Mycolors} from '../../theme/AppTheme';
 import Svg, {Path} from 'react-native-svg';
-import {DefaultTextInput} from '../../components/DefaultTextInput';
-import {DefaultButton} from '../../components/DefaultButton';
 import styles from './Styles';
+import {DefaultTextInput} from '../../../components/DefaultTextInput';
+import {DefaultButton} from '../../../components/DefaultButton';
+import {Mycolors} from '../../../theme/AppTheme';
+import {RootStackParamList} from '../../../navigation/MainStackNavigator';
+import viewModel from './ViewModel';
 
-interface Props extends StackScreenProps<RootStackParamList, 'HomeScreen'> {}
+interface Props extends StackScreenProps<RootStackParamList, 'LoginScreen'> {}
 
-export const HomeScreen = ({navigation, route}: Props) => {
+export const LoginScreen = ({navigation, route}: Props) => {
+  const {email, password, onChange, login} = viewModel();
+
   return (
     <View style={styles.container}>
       {/* Barra de estado con fondo azul */}
@@ -30,30 +33,36 @@ export const HomeScreen = ({navigation, route}: Props) => {
       {/* Contenido */}
       <View style={styles.content}>
         <Image
-          source={require('../../../../assets/img/marvel8.png')}
+          source={require('../../../../../assets/img/marvel8.png')}
           style={styles.image}
         />
         <Image
-          source={require('../../../../assets/img/teladearana.png')}
+          source={require('../../../../../assets/img/teladearana.png')}
           style={styles.image3}
         />
         <Image
-          source={require('../../../../assets/img/marvellogin.png')}
+          source={require('../../../../../assets/img/marvellogin.png')}
           style={styles.image2}
         />
         <DefaultTextInput
           placeholder="Correo Electrónico"
-          image={require('../../../../assets/img/email.png')}
+          image={require('../../../../../assets/img/email.png')}
+          prop="email"
+          value={email}
+          onChangeText={onChange}
         />
 
         <DefaultTextInput
           placeholder="Contraseña"
-          image={require('../../../../assets/img/password.png')}
+          image={require('../../../../../assets/img/password.png')}
+          prop="password"
+          value={password}
+          onChangeText={onChange}
         />
 
         <DefaultButton
           text="Inicia sesión"
-          onPress={() => {}}
+          onPress={() => login()}
           // image={require('./assets/img/add.png')}
         />
         <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>

@@ -5,9 +5,18 @@ import {Mycolors} from '../theme/AppTheme';
 interface Props {
   placeholder: string;
   image: any;
+  value: string;
+  prop: string;
+  onChangeText: (prop: string, values: any) => void;
 }
 
-export const DefaultTextInput = ({placeholder, image}: Props) => {
+export const DefaultTextInput = ({
+  placeholder,
+  image,
+  value,
+  prop,
+  onChangeText,
+}: Props) => {
   return (
     <View style={styles.container}>
       <Image source={image} style={styles.image} />
@@ -15,6 +24,8 @@ export const DefaultTextInput = ({placeholder, image}: Props) => {
         style={styles.textInput}
         placeholderTextColor={Mycolors.placeholder}
         placeholder={placeholder}
+        value={value}
+        onChangeText={text => onChangeText(prop, text)}
       />
     </View>
   );

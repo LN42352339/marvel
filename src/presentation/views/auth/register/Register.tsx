@@ -1,6 +1,6 @@
 import React from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
-import {RootStackParamList} from '../../navigation/MainStackNavigator';
+import {RootStackParamList} from '../../../navigation/MainStackNavigator';
 import {View, Text} from 'react-native';
 
 interface Props

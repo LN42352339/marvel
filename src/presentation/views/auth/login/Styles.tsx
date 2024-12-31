@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {Mycolors} from '../../theme/AppTheme';
+import {Mycolors} from '../../../theme/AppTheme';
 
-const HomeStyles = StyleSheet.create({
+const LoginStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Mycolors.background,
@@ -56,4 +56,4 @@ const HomeStyles = StyleSheet.create({
   },
 });
 
-export default HomeStyles;
+export default LoginStyles;
