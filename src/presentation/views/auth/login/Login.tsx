@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
-import {Text, View, Image, StatusBar, TouchableOpacity} from 'react-native';
+import {Text, View, Image, StatusBar, TouchableOpacity, ToastAndroid} from 'react-native';
 import Svg, {Path} from 'react-native-svg';
 import styles from './Styles';
 import {DefaultTextInput} from '../../../components/DefaultTextInput';
@@ -12,7 +12,15 @@ import viewModel from './ViewModel';
 interface Props extends StackScreenProps<RootStackParamList, 'LoginScreen'> {}
 
 export const LoginScreen = ({navigation, route}: Props) => {
-  const {email, password, onChange, login} = viewModel();
+  const {email, password, onChange, login, error, setError} = viewModel();
+
+  useEffect(() => {
+    if (error !== ''){
+      ToastAndroid.show(error, ToastAndroid.LONG);
+    }
+    setError('');
+  }, [error])
+  
 
   return (
     <View style={styles.container}>
@@ -63,7 +71,7 @@ export const LoginScreen = ({navigation, route}: Props) => {
         <DefaultButton
           text="Inicia sesión"
           onPress={() => login()}
-          // image={require('./assets/img/add.png')}
+          
         />
         <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
           <Text style={styles.textRegister}>REGISTRATE AHORA</Text>
