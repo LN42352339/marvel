@@ -40,6 +40,9 @@ const styles = StyleSheet.create({
     width: 25,
     marginTop: 19,
     marginLeft: 10,
+    backgroundColor: Mycolors.primary,
+    
+    
   },
   textInput: {
     borderBottomWidth: 1,
@@ -50,7 +53,9 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 15,
     marginBottom: 6,
-    color: Mycolors.secondary,
+    color: Mycolors.primary,
     flex: 1,
+    
+    
   },
 });
