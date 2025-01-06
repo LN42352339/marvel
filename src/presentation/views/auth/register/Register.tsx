@@ -8,14 +8,14 @@ import { Mycolors } from '../../../theme/AppTheme';
 import styles from './Styles';
 import { DefaultTextInput } from '../../../components/DefaultTextInput';
 import { DefaultButton } from '../../../components/DefaultButton';
-import viewModel from './ViewModel';
+import DI from '../../../di/ioc';
 
 
 interface Props extends StackScreenProps<RootStackParamList, 'RegisterScreen'> { }
 
 export const RegisterScreen = ({ navigation, route }: Props) => {
 
-  const {username, email, password, confirmPassword,error,setError, onChange, register} = viewModel();
+  const {username, email, password, confirmPassword,error,setError, onChange, register} = DI.resolve('ResgisterViewModel');
 
   useEffect(() => {
    if (error !== ''){

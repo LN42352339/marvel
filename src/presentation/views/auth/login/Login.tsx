@@ -7,12 +7,12 @@ import {DefaultTextInput} from '../../../components/DefaultTextInput';
 import {DefaultButton} from '../../../components/DefaultButton';
 import {Mycolors} from '../../../theme/AppTheme';
 import {RootStackParamList} from '../../../navigation/MainStackNavigator';
-import viewModel from './ViewModel';
+import DI from '../../../di/ioc';
 
 interface Props extends StackScreenProps<RootStackParamList, 'LoginScreen'> {}
 
 export const LoginScreen = ({navigation, route}: Props) => {
-  const {email, password, onChange, login, error, setError} = viewModel();
+  const {email, password, onChange, login, error, setError} = DI.resolve('LoginViewModel');
 
   useEffect(() => {
     if (error !== ''){
@@ -65,6 +65,7 @@ export const LoginScreen = ({navigation, route}: Props) => {
           image={require('../../../../../assets/img/password.png')}
           prop="password"
           value={password}
+          secureTextEntry={true}
           onChangeText={onChange}
         />
 
