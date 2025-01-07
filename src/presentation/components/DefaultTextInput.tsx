@@ -1,5 +1,5 @@
-import React from 'react';
-import {Image, StyleSheet, TextInput, View} from 'react-native';
+import React, { Key } from 'react';
+import {Image, KeyboardType, StyleSheet, TextInput, View} from 'react-native';
 import {Mycolors} from '../theme/AppTheme';
 
 interface Props {
@@ -7,6 +7,8 @@ interface Props {
   image: any;
   value: string;
   prop: string;
+  keyboardType?: KeyboardType;
+  secureTextEntry?: boolean;
   onChangeText: (prop: string, values: any) => void;
 }
 
@@ -16,6 +18,9 @@ export const DefaultTextInput = ({
   value,
   prop,
   onChangeText,
+  keyboardType = 'default',
+  secureTextEntry = false,
+
 }: Props) => {
   return (
     <View style={styles.container}>
@@ -25,6 +30,9 @@ export const DefaultTextInput = ({
         placeholderTextColor={Mycolors.placeholder}
         placeholder={placeholder}
         value={value}
+        keyboardType={keyboardType}
+        secureTextEntry={secureTextEntry}
+        autoCapitalize='none'
         onChangeText={text => onChangeText(prop, text)}
       />
     </View>
@@ -40,6 +48,9 @@ const styles = StyleSheet.create({
     width: 25,
     marginTop: 19,
     marginLeft: 10,
+    backgroundColor: Mycolors.primary,
+    
+    
   },
   textInput: {
     borderBottomWidth: 1,
@@ -50,7 +61,9 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 15,
     marginBottom: 6,
-    color: Mycolors.secondary,
+    color: Mycolors.primary,
     flex: 1,
+    
+    
   },
 });
