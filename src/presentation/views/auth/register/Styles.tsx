@@ -54,6 +54,11 @@ const Registerstyles = StyleSheet.create({
     width: 30,
   },
 
+  prueba: {
+    height: 30,
+    width: 30,
+  },
+
   overlay: {
     backgroundColor: 'rgba(255, 255, 255, 0.8)', // Fondo blanco semitransparente
     borderRadius: 10, // Bordes redondeados
