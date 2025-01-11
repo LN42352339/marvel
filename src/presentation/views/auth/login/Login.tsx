@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import React, { useEffect } from 'react';
-import {StackScreenProps} from '@react-navigation/stack';
-import {Text, View, Image, StatusBar, TouchableOpacity, ToastAndroid} from 'react-native';
-=======
 import React, {useEffect, useState} from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
 import {
@@ -14,7 +9,6 @@ import {
   Keyboard,
   Animated,
 } from 'react-native';
->>>>>>> origin/dev
 import Svg, {Path} from 'react-native-svg';
 import styles from './Styles';
 import {DefaultTextInput} from '../../../components/DefaultTextInput';
@@ -26,24 +20,6 @@ import DI from '../../../di/ioc';
 interface Props extends StackScreenProps<RootStackParamList, 'LoginScreen'> {}
 
 export const LoginScreen = ({navigation, route}: Props) => {
-<<<<<<< HEAD
-  const {email, password, onChange, login, error, setError} = DI.resolve('LoginViewModel');
-
-  useEffect(() => {
-    if (error !== ''){
-      ToastAndroid.show(error, ToastAndroid.LONG);
-    }
-    setError('');
-  }, [error])
-  
-
-  return (
-    <View style={styles.container}>
-      {/* Barra de estado con fondo azul */}
-      <StatusBar backgroundColor={Mycolors.primary} barStyle="light-content" />
-
-      {/* Fondo azul y SVG */}
-=======
   const {email, password, onChange, login, error, setError} =
     DI.resolve('LoginViewModel');
 
@@ -91,7 +67,6 @@ export const LoginScreen = ({navigation, route}: Props) => {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={Mycolors.primary} barStyle="light-content" />
->>>>>>> origin/dev
       <View style={styles.headerBackground}>
         <Svg viewBox="0 0 1440 320" style={styles.svg}>
           <Path
@@ -101,22 +76,6 @@ export const LoginScreen = ({navigation, route}: Props) => {
           />
         </Svg>
       </View>
-<<<<<<< HEAD
-
-      {/* Contenido */}
-      <View style={styles.content}>
-        <Image
-          source={require('../../../../../assets/img/marvel8.png')}
-          style={styles.image}
-        />
-        <Image
-          source={require('../../../../../assets/img/teladearana.png')}
-          style={styles.image3}
-        />
-        <Image
-          source={require('../../../../../assets/img/marvellogin.png')}
-          style={styles.image2}
-=======
       <View style={styles.content}>
         {/* Usar Animated.Image para aplicar la opacidad */}
         <Animated.Image
@@ -130,7 +89,6 @@ export const LoginScreen = ({navigation, route}: Props) => {
         <Animated.Image
           source={require('../../../../../assets/img/marvellogin.png')}
           style={[styles.image2, {opacity: imageOpacity}]}
->>>>>>> origin/dev
         />
         <DefaultTextInput
           placeholder="Correo Electrónico"
@@ -139,10 +97,6 @@ export const LoginScreen = ({navigation, route}: Props) => {
           value={email}
           onChangeText={onChange}
         />
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/dev
         <DefaultTextInput
           placeholder="Contraseña"
           image={require('../../../../../assets/img/password.png')}
@@ -151,20 +105,9 @@ export const LoginScreen = ({navigation, route}: Props) => {
           secureTextEntry={true}
           onChangeText={onChange}
         />
-<<<<<<< HEAD
-
-        <DefaultButton
-          text="Inicia sesión"
-          onPress={() => login()}
-          
-        />
-        <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
-          <Text style={styles.textRegister}>REGISTRATE AHORA</Text>
-=======
         <DefaultButton text="Inicia sesión" onPress={() => login()} />
         <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
           <Text style={styles.textRegister}>REGÍSTRATE AHORA</Text>
->>>>>>> origin/dev
         </TouchableOpacity>
       </View>
     </View>

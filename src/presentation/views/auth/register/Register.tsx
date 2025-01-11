@@ -1,36 +1,3 @@
-<<<<<<< HEAD
-import React, { useEffect } from 'react';
-import { StackScreenProps } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../navigation/MainStackNavigator';
-import { View, Text, Image, StatusBar, Touchable, TouchableOpacity, ToastAndroid } from 'react-native';
-import Style from './Styles';
-import Svg, { Path } from 'react-native-svg';
-import { Mycolors } from '../../../theme/AppTheme';
-import styles from './Styles';
-import { DefaultTextInput } from '../../../components/DefaultTextInput';
-import { DefaultButton } from '../../../components/DefaultButton';
-import DI from '../../../di/ioc';
-
-
-interface Props extends StackScreenProps<RootStackParamList, 'RegisterScreen'> { }
-
-export const RegisterScreen = ({ navigation, route }: Props) => {
-
-  const {username, email, password, confirmPassword,error,setError, onChange, register} = DI.resolve('ResgisterViewModel');
-
-  useEffect(() => {
-   if (error !== ''){
-         ToastAndroid.show(error, ToastAndroid.LONG);
-       }
-       setError('');
-  }, [error])
-  
-
-
-  return (
-    <View style={styles.container}>
-
-=======
 import React, {useEffect, useState} from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
 import {RootStackParamList} from '../../../navigation/MainStackNavigator';
@@ -100,7 +67,6 @@ export const RegisterScreen = ({navigation, route}: Props) => {
 
   return (
     <View style={styles.container}>
->>>>>>> origin/dev
       {/* Barra de estado con fondo azul */}
       <StatusBar backgroundColor={Mycolors.primary} barStyle="light-content" />
 
@@ -117,92 +83,6 @@ export const RegisterScreen = ({navigation, route}: Props) => {
 
       {/* Contenido */}
       <View style={styles.content}>
-<<<<<<< HEAD
-
-
-        <TouchableOpacity style={styles.arrow_back_container}
-        onPress={() => navigation.pop()}> 
-          <Image
-
-            source={require('../../../../../assets/img/left-arrow.png')}
-            style={styles.arrow_back}
-          />
-
-        </TouchableOpacity>
-
-
-
-        <Image
-          source={require('../../../../../assets/img/marvel8.png')}
-          style={styles.image}
-        />
-
-
-
-        <Image
-          source={require('../../../../../assets/img/teladearana.png')}
-          style={styles.image3}
-        />
-        <Image
-          source={require('../../../../../assets/img/marvellogin.png')}
-          style={styles.image2}
-        />
-
-        <View style={{ flex: 1 }}></View>
-
-        <DefaultTextInput
-
-          placeholder="Nombre de usuario"
-          image={require('../../../../../assets/img/user_image.png')}
-          prop='username'
-          value={username}
-          onChangeText={ onChange}
-
-        />
-
-        <DefaultTextInput
-
-          placeholder="Email"
-          image={require('../../../../../assets/img/email.png')}
-          prop='email'
-          value={email}
-          onChangeText={onChange}
-
-        />
-
-        <DefaultTextInput
-
-          placeholder="Contraseña"
-          image={require('../../../../../assets/img/password.png')}
-          prop='password'
-          value={password}
-          onChangeText={onChange}
-
-        />
-
-        <DefaultTextInput
-
-          placeholder="Confirmar Contraseña"
-          image={require('../../../../../assets/img/password.png')}
-          prop='confirmPassword'
-          value={confirmPassword}
-          onChangeText={onChange}
-
-        />
-
-        <DefaultButton
-
-          text='REGISTRARSE'
-          onPress={() => register()}
-
-        />
-
-      </View>
-    </View>
-  )
-
-}
-=======
         <TouchableOpacity
           style={styles.arrow_back_container}
           onPress={() => navigation.pop()}>
@@ -265,4 +145,3 @@ export const RegisterScreen = ({navigation, route}: Props) => {
     </View>
   );
 };
->>>>>>> origin/dev
