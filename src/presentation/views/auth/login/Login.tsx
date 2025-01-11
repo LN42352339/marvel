@@ -1,6 +1,20 @@
+<<<<<<< HEAD
 import React, { useEffect } from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
 import {Text, View, Image, StatusBar, TouchableOpacity, ToastAndroid} from 'react-native';
+=======
+import React, {useEffect, useState} from 'react';
+import {StackScreenProps} from '@react-navigation/stack';
+import {
+  Text,
+  View,
+  StatusBar,
+  TouchableOpacity,
+  ToastAndroid,
+  Keyboard,
+  Animated,
+} from 'react-native';
+>>>>>>> origin/dev
 import Svg, {Path} from 'react-native-svg';
 import styles from './Styles';
 import {DefaultTextInput} from '../../../components/DefaultTextInput';
@@ -12,6 +26,7 @@ import DI from '../../../di/ioc';
 interface Props extends StackScreenProps<RootStackParamList, 'LoginScreen'> {}
 
 export const LoginScreen = ({navigation, route}: Props) => {
+<<<<<<< HEAD
   const {email, password, onChange, login, error, setError} = DI.resolve('LoginViewModel');
 
   useEffect(() => {
@@ -28,6 +43,55 @@ export const LoginScreen = ({navigation, route}: Props) => {
       <StatusBar backgroundColor={Mycolors.primary} barStyle="light-content" />
 
       {/* Fondo azul y SVG */}
+=======
+  const {email, password, onChange, login, error, setError} =
+    DI.resolve('LoginViewModel');
+
+  const [imageOpacity] = useState(new Animated.Value(1)); // Valor inicial de opacidad
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        // Animar la opacidad a 0.5 cuando se muestra el teclado
+        Animated.timing(imageOpacity, {
+          toValue: 0.4,
+          duration: 300,
+          useNativeDriver: true,
+        }).start();
+      },
+    );
+
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        // Animar la opacidad de regreso a 1 cuando el teclado se oculta
+        Animated.timing(imageOpacity, {
+          toValue: 1,
+          duration: 300,
+          useNativeDriver: true,
+        }).start();
+      },
+    );
+
+    return () => {
+      // Limpiar los listeners
+      keyboardDidShowListener.remove();
+      keyboardDidHideListener.remove();
+    };
+  }, [imageOpacity]);
+
+  useEffect(() => {
+    if (error !== '') {
+      ToastAndroid.show(error, ToastAndroid.LONG);
+    }
+    setError('');
+  }, [error, setError]);
+
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor={Mycolors.primary} barStyle="light-content" />
+>>>>>>> origin/dev
       <View style={styles.headerBackground}>
         <Svg viewBox="0 0 1440 320" style={styles.svg}>
           <Path
@@ -37,6 +101,7 @@ export const LoginScreen = ({navigation, route}: Props) => {
           />
         </Svg>
       </View>
+<<<<<<< HEAD
 
       {/* Contenido */}
       <View style={styles.content}>
@@ -51,6 +116,21 @@ export const LoginScreen = ({navigation, route}: Props) => {
         <Image
           source={require('../../../../../assets/img/marvellogin.png')}
           style={styles.image2}
+=======
+      <View style={styles.content}>
+        {/* Usar Animated.Image para aplicar la opacidad */}
+        <Animated.Image
+          source={require('../../../../../assets/img/marvel8.png')}
+          style={[styles.image, {opacity: imageOpacity}]}
+        />
+        <Animated.Image
+          source={require('../../../../../assets/img/teladearana.png')}
+          style={[styles.image3, {opacity: imageOpacity}]}
+        />
+        <Animated.Image
+          source={require('../../../../../assets/img/marvellogin.png')}
+          style={[styles.image2, {opacity: imageOpacity}]}
+>>>>>>> origin/dev
         />
         <DefaultTextInput
           placeholder="Correo Electrónico"
@@ -59,7 +139,10 @@ export const LoginScreen = ({navigation, route}: Props) => {
           value={email}
           onChangeText={onChange}
         />
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/dev
         <DefaultTextInput
           placeholder="Contraseña"
           image={require('../../../../../assets/img/password.png')}
@@ -68,6 +151,7 @@ export const LoginScreen = ({navigation, route}: Props) => {
           secureTextEntry={true}
           onChangeText={onChange}
         />
+<<<<<<< HEAD
 
         <DefaultButton
           text="Inicia sesión"
@@ -76,6 +160,11 @@ export const LoginScreen = ({navigation, route}: Props) => {
         />
         <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
           <Text style={styles.textRegister}>REGISTRATE AHORA</Text>
+=======
+        <DefaultButton text="Inicia sesión" onPress={() => login()} />
+        <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
+          <Text style={styles.textRegister}>REGÍSTRATE AHORA</Text>
+>>>>>>> origin/dev
         </TouchableOpacity>
       </View>
     </View>

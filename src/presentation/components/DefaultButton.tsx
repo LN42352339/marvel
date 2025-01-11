@@ -40,7 +40,11 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 15,
     color: 'white',
+<<<<<<< HEAD
     textAlign: 'left',
+=======
+    textAlign: 'auto',
+>>>>>>> origin/dev
     width: '100%',
     marginLeft: 60,
   },

@@ -48,7 +48,11 @@ const LoginStyles = StyleSheet.create({
 
   textRegister: {
     width: '100%',
+<<<<<<< HEAD
     fontSize: 9,
+=======
+    fontSize: 12,
+>>>>>>> origin/dev
     textAlign: 'center',
     marginTop: 20,
     marginBottom: 60,

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect } from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../navigation/MainStackNavigator';
@@ -29,6 +30,77 @@ export const RegisterScreen = ({ navigation, route }: Props) => {
   return (
     <View style={styles.container}>
 
+=======
+import React, {useEffect, useState} from 'react';
+import {StackScreenProps} from '@react-navigation/stack';
+import {RootStackParamList} from '../../../navigation/MainStackNavigator';
+import {
+  View,
+  Image,
+  StatusBar,
+  TouchableOpacity,
+  ToastAndroid,
+  Keyboard,
+} from 'react-native';
+import Svg, {Path} from 'react-native-svg';
+import {Mycolors} from '../../../theme/AppTheme';
+import styles from './Styles';
+import {DefaultTextInput} from '../../../components/DefaultTextInput';
+import {DefaultButton} from '../../../components/DefaultButton';
+import DI from '../../../di/ioc';
+import NavigationBarColor from 'react-native-navigation-bar-color';
+
+NavigationBarColor(Mycolors.background, true); // Cambia el color a rojo y texto claro
+
+interface Props
+  extends StackScreenProps<RootStackParamList, 'RegisterScreen'> {}
+
+export const RegisterScreen = ({navigation, route}: Props) => {
+  const {
+    username,
+    email,
+    password,
+    confirmPassword,
+    error,
+    setError,
+    onChange,
+    register,
+  } = DI.resolve('ResgisterViewModel');
+
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
+  useEffect(() => {
+    // Listener para detectar si el teclado se muestra o se oculta
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true); // El teclado está visible
+      },
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false); // El teclado está oculto
+      },
+    );
+
+    return () => {
+      // Remover listeners al desmontar el componente
+      keyboardDidShowListener.remove();
+      keyboardDidHideListener.remove();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (error !== '') {
+      ToastAndroid.show(error, ToastAndroid.LONG);
+    }
+    setError('');
+  }, [error, setError]);
+
+  return (
+    <View style={styles.container}>
+>>>>>>> origin/dev
       {/* Barra de estado con fondo azul */}
       <StatusBar backgroundColor={Mycolors.primary} barStyle="light-content" />
 
@@ -45,6 +117,7 @@ export const RegisterScreen = ({ navigation, route }: Props) => {
 
       {/* Contenido */}
       <View style={styles.content}>
+<<<<<<< HEAD
 
 
         <TouchableOpacity style={styles.arrow_back_container}
@@ -129,3 +202,67 @@ export const RegisterScreen = ({ navigation, route }: Props) => {
   )
 
 }
+=======
+        <TouchableOpacity
+          style={styles.arrow_back_container}
+          onPress={() => navigation.pop()}>
+          <Image
+            source={require('../../../../../assets/img/back.png')}
+            style={styles.arrow_back}
+          />
+
+          {/* Imagen de registro con opacidad dinámica */}
+          <Image
+            source={require('../../../../../assets/img/register.png')}
+            style={[
+              styles.image2,
+              {opacity: isKeyboardVisible ? 0.2 : 1}, // Cambia la opacidad según el estado del teclado
+            ]}
+          />
+        </TouchableOpacity>
+
+        <View style={{flex: 1}} />
+
+        {/* Campos de entrada */}
+        <DefaultTextInput
+          placeholder="Nombre de usuario"
+          image={require('../../../../../assets/img/user_image.png')}
+          prop="username"
+          value={username}
+          onChangeText={onChange}
+        />
+
+        <DefaultTextInput
+          placeholder="Email"
+          image={require('../../../../../assets/img/email.png')}
+          prop="email"
+          value={email}
+          onChangeText={onChange}
+        />
+
+        <DefaultTextInput
+          placeholder="Contraseña"
+          image={require('../../../../../assets/img/password.png')}
+          prop="password"
+          value={password}
+          onChangeText={onChange}
+        />
+
+        <DefaultTextInput
+          placeholder="Confirmar Contraseña"
+          image={require('../../../../../assets/img/password.png')}
+          prop="confirmPassword"
+          value={confirmPassword}
+          onChangeText={onChange}
+        />
+
+        <DefaultButton
+          text="  Regístrate"
+          onPress={() => register()}
+          //image={require('../../../../../assets/img/icohulk.png')}
+        />
+      </View>
+    </View>
+  );
+};
+>>>>>>> origin/dev
