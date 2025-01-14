@@ -1,8 +1,8 @@
-APLICACION MOVIL PROYECTO – BLOG DE  MARVEL
+##APLICACION MOVIL PROYECTO – BLOG DE  MARVEL
 
 
-Estructura del Proyecto
-Raíz del Proyecto:
+##Estructura del Proyecto
+###Raíz del Proyecto:
 
 App.tsx: Punto de entrada de la aplicación. Configura el contenedor de navegación.
 index.js: Registra el componente principal de la aplicación.
@@ -11,36 +11,42 @@ tsconfig.json: Configuración de TypeScript.
 babel.config.js: Configuración de Babel.
 jest.config.js: Configuración de Jest para pruebas.
 .eslintrc.js y .prettierrc.js: Configuración de ESLint y Prettier para el linting y formateo del código.
-Carpetas Principales:
 
-android e ios: Contienen la configuración específica para las plataformas Android e iOS.
-assets: Contiene recursos estáticos como imágenes.
-src: Contiene el código fuente de la aplicación.
+###Carpetas Principales:
+
+###android e ios: Contienen la configuración específica para las plataformas Android e iOS.
+###assets: Contiene recursos estáticos como imágenes.
+###src: Contiene el código fuente de la aplicación.
 Código Fuente (src)
-Navegación:
 
-MainStackNavigator.tsx: Define la navegación principal de la aplicación utilizando createNativeStackNavigator de React Navigation. Incluye las pantallas de inicio de sesión y registro.
+###Navegación:
+
+###MainStackNavigator.tsx: Define la navegación principal de la aplicación utilizando createNativeStackNavigator de React Navigation. Incluye las pantallas de inicio de sesión y registro.
 Vistas:
 
-Login.tsx: Componente de la pantalla de inicio de sesión.
-Register.tsx: Componente de la pantalla de registro.
+###Login.tsx: Componente de la pantalla de inicio de sesión.
+###Register.tsx: Componente de la pantalla de registro.
 Styles.tsx y Styles.tsx: Estilos para las pantallas de inicio de sesión y registro.
-Componentes:
 
-DefaultButton.tsx: Componente de botón reutilizable.
-DefaultTextInput.tsx: Componente de campo de texto reutilizable.
-Tema:
+###Componentes:
 
-AppTheme.tsx: Define los colores utilizados en la aplicación.
-Inyección de Dependencias:
+###DefaultButton.tsx: Componente de botón reutilizable.
+###DefaultTextInput.tsx: Componente de campo de texto reutilizable.
 
-ioc.tsx: Configura la inyección de dependencias utilizando awilix.
-ViewModels:
+###Tema:
 
-ViewModel.tsx: Lógica de la pantalla de inicio de sesión.
-ViewModel.tsx: Lógica de la pantalla de registro.
-Funcionamiento
-Inicio de la Aplicación:
+###AppTheme.tsx: Define los colores utilizados en la aplicación.
+
+##Inyección de Dependencias:
+
+###ioc.tsx: Configura la inyección de dependencias utilizando awilix.
+
+##ViewModels:
+
+###ViewModel.tsx: Lógica de la pantalla de inicio de sesión.
+###ViewModel.tsx: Lógica de la pantalla de registro.
+
+##Funcionamiento Inicio de la Aplicación:
 
 La aplicación inicia en App.tsx, que configura el NavigationContainer y el MainStackNavigator.
 Navegación:
