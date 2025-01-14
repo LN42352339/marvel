@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 15,
     color: 'white',
-    textAlign: 'left',
+    textAlign: 'auto',
     width: '100%',
     marginLeft: 60,
   },
