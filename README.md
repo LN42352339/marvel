@@ -1,3 +1,66 @@
+APLICACION MOVIL PROYECTO – BLOG DE  MARVEL
+
+
+Estructura del Proyecto
+Raíz del Proyecto:
+
+App.tsx: Punto de entrada de la aplicación. Configura el contenedor de navegación.
+index.js: Registra el componente principal de la aplicación.
+package.json: Contiene las dependencias y scripts del proyecto.
+tsconfig.json: Configuración de TypeScript.
+babel.config.js: Configuración de Babel.
+jest.config.js: Configuración de Jest para pruebas.
+.eslintrc.js y .prettierrc.js: Configuración de ESLint y Prettier para el linting y formateo del código.
+Carpetas Principales:
+
+android e ios: Contienen la configuración específica para las plataformas Android e iOS.
+assets: Contiene recursos estáticos como imágenes.
+src: Contiene el código fuente de la aplicación.
+Código Fuente (src)
+Navegación:
+
+MainStackNavigator.tsx: Define la navegación principal de la aplicación utilizando createNativeStackNavigator de React Navigation. Incluye las pantallas de inicio de sesión y registro.
+Vistas:
+
+Login.tsx: Componente de la pantalla de inicio de sesión.
+Register.tsx: Componente de la pantalla de registro.
+Styles.tsx y Styles.tsx: Estilos para las pantallas de inicio de sesión y registro.
+Componentes:
+
+DefaultButton.tsx: Componente de botón reutilizable.
+DefaultTextInput.tsx: Componente de campo de texto reutilizable.
+Tema:
+
+AppTheme.tsx: Define los colores utilizados en la aplicación.
+Inyección de Dependencias:
+
+ioc.tsx: Configura la inyección de dependencias utilizando awilix.
+ViewModels:
+
+ViewModel.tsx: Lógica de la pantalla de inicio de sesión.
+ViewModel.tsx: Lógica de la pantalla de registro.
+Funcionamiento
+Inicio de la Aplicación:
+
+La aplicación inicia en App.tsx, que configura el NavigationContainer y el MainStackNavigator.
+Navegación:
+
+MainStackNavigator define las rutas para las pantallas de inicio de sesión y registro.
+Pantallas de Autenticación:
+
+LoginScreen y RegisterScreen renderizan los formularios de inicio de sesión y registro, respectivamente.
+Utilizan componentes reutilizables como DefaultTextInput y DefaultButton.
+Inyección de Dependencias:
+
+ioc.tsx configura los ViewModels (LoginViewModel y ResgisterViewModel) que contienen la lógica de negocio para las pantallas de autenticación.
+Estilos y Temas:
+
+Los estilos se definen en archivos separados (Styles.tsx) y los colores en AppTheme.tsx.
+Resumen
+Este proyecto es una aplicación móvil de React Native que utiliza TypeScript y sigue una arquitectura modular. La navegación se maneja con React Navigation, y la lógica de negocio se encapsula en ViewModels. La inyección de dependencias se realiza con awilix, y los componentes reutilizables se utilizan para construir las pantallas de la aplicación.
+
+
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
