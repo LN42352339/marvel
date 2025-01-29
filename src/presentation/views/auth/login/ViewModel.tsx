@@ -1,7 +1,8 @@
 import {useState} from 'react';
 import auth from '@react-native-firebase/auth';
+import { LoginUseCase } from '../../../../domain/useaCases/auth/LoginUseCase';
 
-const LoginViewModel = () => {
+const LoginViewModel = ({LoginUseCase}:{LoginUseCase:LoginUseCase}) => {
   const [error, setError] = useState('');
   const [values, setValues] = useState({
     email: '',
@@ -12,28 +13,10 @@ const LoginViewModel = () => {
     setValues({...values, [prop]: value});
   };
 
-  const login = () => {
+  const login = async () => {
     if (isValidForm()) {
-      auth()
-        .signInWithEmailAndPassword(values.email, values.password)
-        .then(() => {
-          console.log('Usuario logeado');
-          setError('');
-        })
-        .catch(error => {
-          if (error.code === 'auth/email-already-in-use') {
-            setError('Ese correo ya está en uso.');
-          } else if (error.code === 'auth/invalid-email') {
-            setError('El correo electrónico es inválido.');
-          } else if (error.code === 'auth/wrong-password') {
-            setError('La contraseña es incorrecta.');
-          } else if (error.code === 'auth/user-not-found') {
-            setError('Usuario no encontrado.');
-          } else {
-            setError('Error inesperado. Por favor, intenta de nuevo.');
-          }
-          console.error(error);
-        });
+      const data = await LoginUseCase.execute(values.email, values.password);
+      console.log('Data', data);
     }
   };
 
