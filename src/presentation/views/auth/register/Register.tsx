@@ -8,13 +8,14 @@ import {
   TouchableOpacity,
   ToastAndroid,
   Keyboard,
+  ActivityIndicator,
 } from 'react-native';
 import Svg, {Path} from 'react-native-svg';
-import {Mycolors} from '../../../theme/AppTheme';
+import {Mycolors, MyStyles} from '../../../theme/AppTheme';
 import styles from './Styles';
 import {DefaultTextInput} from '../../../components/DefaultTextInput';
 import {DefaultButton} from '../../../components/DefaultButton';
-import DI from '../../../di/ioc';
+import DI from '../../../../di//ioc';
 import NavigationBarColor from 'react-native-navigation-bar-color';
 
 NavigationBarColor(Mycolors.background, true); // Cambia el color a rojo y texto claro
@@ -31,8 +32,10 @@ export const RegisterScreen = ({navigation, route}: Props) => {
     error,
     setError,
     onChange,
+    result,
     register,
-  } = DI.resolve('ResgisterViewModel');
+    loading,
+  } = DI.resolve('RegisterViewModel');
 
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
@@ -64,6 +67,16 @@ export const RegisterScreen = ({navigation, route}: Props) => {
     }
     setError('');
   }, [error, setError]);
+
+  useEffect(() => {
+    if (result) {
+      console.log('✅ Usuario Registrado:', result);
+      ToastAndroid.show('Usuario Registrado', ToastAndroid.LONG);
+
+      // 🔹 Reemplaza la pantalla actual por HomeScreen para evitar volver al login con "back"
+      navigation.replace('LoginScreen');
+    }
+  }, [result, navigation]);
 
   return (
     <View style={styles.container}>
@@ -142,6 +155,13 @@ export const RegisterScreen = ({navigation, route}: Props) => {
           //image={require('../../../../../assets/img/icohulk.png')}
         />
       </View>
+      {loading && (
+        <ActivityIndicator
+          size="large"
+          color={Mycolors.primary}
+          style={MyStyles.loading}
+        />
+      )}
     </View>
   );
 };

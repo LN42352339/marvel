@@ -1,7 +1,10 @@
+import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {useState} from 'react';
 
-const ResgisterViewModel = () => {
+const RegisterViewModel = ({RegisterUseCase}) => {
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<FirebaseAuthTypes.UserCredential>();
   const [values, setValues] = useState({
     username: '',
     email: '',
@@ -9,10 +12,13 @@ const ResgisterViewModel = () => {
     confirmPassword: '',
   });
 
-  const register = () => {
+  const register = async () => {
     if (isValidForm()) {
-      console.log('Formulario valido');
-      console.log('Valores', values);
+      setLoading(true); // Mensaje de espera
+      const {result, error} = await RegisterUseCase.run(values);
+      setResult(result);
+      setError(error);
+      setLoading(false);
     }
   };
 
@@ -52,11 +58,13 @@ const ResgisterViewModel = () => {
 
   return {
     ...values,
+    result,
     error,
+    loading,
+    setError,
     onChange,
     register,
-    setError,
   };
 };
 
-export default ResgisterViewModel;
+export default RegisterViewModel;

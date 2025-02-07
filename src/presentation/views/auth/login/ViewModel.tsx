@@ -1,39 +1,49 @@
+import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {useState} from 'react';
-import auth from '@react-native-firebase/auth';
 
-const LoginViewModel = () => {
+const LoginViewModel = ({LoginUseCase, GetUserUseCase}) => {
   const [error, setError] = useState('');
   const [values, setValues] = useState({
     email: '',
     password: '',
   });
+  const [result, setResult] = useState<FirebaseAuthTypes.UserCredential>();
+
+  const [user, setUser] = useState<FirebaseAuthTypes.User>();
+
+  const getUser = () => {
+    const {result, error} = GetUserUseCase.run();
+    setUser(result);
+    setError(error);
+    console.log('Data:', result);
+    console.log('Data:', error);
+  };
 
   const onChange = (prop: string, value: string) => {
     setValues({...values, [prop]: value});
   };
 
-  const login = () => {
+  const login = async () => {
     if (isValidForm()) {
-      auth()
-        .signInWithEmailAndPassword(values.email, values.password)
-        .then(() => {
-          console.log('Usuario logeado');
-          setError('');
-        })
-        .catch(error => {
-          if (error.code === 'auth/email-already-in-use') {
-            setError('Ese correo ya está en uso.');
-          } else if (error.code === 'auth/invalid-email') {
-            setError('El correo electrónico es inválido.');
-          } else if (error.code === 'auth/wrong-password') {
-            setError('La contraseña es incorrecta.');
-          } else if (error.code === 'auth/user-not-found') {
-            setError('Usuario no encontrado.');
-          } else {
-            setError('Error inesperado. Por favor, intenta de nuevo.');
-          }
-          console.error(error);
-        });
+      try {
+        const {result, error} = await LoginUseCase.run(
+          values.email,
+          values.password,
+        );
+
+        console.log('🎯 Resultado de LoginUseCase en LoginViewModel:', result);
+        console.log('🎯 Error de LoginUseCase en LoginViewModel:', error);
+
+        if (error) {
+          setError(error);
+          return;
+        }
+
+        setResult(result);
+      } catch (err) {
+        console.error('🔥 Error en login:', err);
+        setError('Error inesperado en el login');
+      }
     }
   };
 
@@ -63,7 +73,10 @@ const LoginViewModel = () => {
     onChange,
     login,
     error,
+    result,
+    user,
     setError,
+    getUser,
   };
 };
 

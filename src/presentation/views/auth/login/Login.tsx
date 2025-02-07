@@ -15,12 +15,12 @@ import {DefaultTextInput} from '../../../components/DefaultTextInput';
 import {DefaultButton} from '../../../components/DefaultButton';
 import {Mycolors} from '../../../theme/AppTheme';
 import {RootStackParamList} from '../../../navigation/MainStackNavigator';
-import DI from '../../../di/ioc';
+import DI from '../../../../di//ioc';
 
 interface Props extends StackScreenProps<RootStackParamList, 'LoginScreen'> {}
 
 export const LoginScreen = ({navigation, route}: Props) => {
-  const {email, password, onChange, login, error, setError} =
+  const {email, password, onChange, login, error, setError, result} =
     DI.resolve('LoginViewModel');
 
   const [imageOpacity] = useState(new Animated.Value(1)); // Valor inicial de opacidad
@@ -63,6 +63,15 @@ export const LoginScreen = ({navigation, route}: Props) => {
     }
     setError('');
   }, [error, setError]);
+
+  useEffect(() => {
+    if (result) {
+      console.log('✅ Usuario Logeado:', result);
+      ToastAndroid.show('Usuario Logeado', ToastAndroid.LONG);
+      // 🔹 Reemplaza la pantalla actual por HomeScreen para evitar volver al login con "back"
+      navigation.replace('HomeScreen');
+    }
+  }, [result, navigation]);
 
   return (
     <View style={styles.container}>
