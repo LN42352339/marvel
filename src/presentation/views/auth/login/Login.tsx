@@ -69,7 +69,7 @@ export const LoginScreen = ({navigation, route}: Props) => {
       console.log('✅ Usuario Logeado:', result);
       ToastAndroid.show('Usuario Logeado', ToastAndroid.LONG);
       // 🔹 Reemplaza la pantalla actual por HomeScreen para evitar volver al login con "back"
-      navigation.replace('HomeScreen');
+      navigation.replace('TabsNavigator');
     }
   }, [result, navigation]);
 

@@ -1,10 +1,14 @@
 // ESTADOS DE LA PETICION
 // LOADING
-//ERROR
-//SUCCESS
+// ERROR
+// SUCCESS
 
 export abstract class Resource {
   constructor() {}
+}
+
+export function Init(): Resource {
+  return {};
 }
 export function Loading(): Resource {
   return {};

@@ -1,19 +1,24 @@
 import React from 'react';
 import {TouchableOpacity, View, Text, Image, StyleSheet} from 'react-native';
+import {Mycolors} from '../theme/AppTheme';
 
 interface Props {
   text: String;
   onPress: () => void;
   image?: any;
+  color?: string;
 }
 
 export const DefaultButton = ({
   text,
   onPress,
   image = require('../../../assets/img/escudo.png'),
+  color = Mycolors.primary,
 }: Props) => {
   return (
-    <TouchableOpacity style={styles.button} onPress={() => onPress()}>
+    <TouchableOpacity
+      style={{...styles.button, backgroundColor: color}}
+      onPress={() => onPress()}>
       <View></View>
       <Text style={styles.buttonText}>{text}</Text>
       <Image source={image} style={styles.buttonIcon} />
@@ -24,7 +29,7 @@ export const DefaultButton = ({
 const styles = StyleSheet.create({
   button: {
     width: '90%',
-    backgroundColor: '#3B4480',
+    // backgroundColor: color,
     height: 50,
     marginTop: 20,
     alignItems: 'center',
