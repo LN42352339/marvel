@@ -1,3 +1,4 @@
+
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {useState} from 'react';
 import * as ImagePicker from 'react-native-image-picker';
