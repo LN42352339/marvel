@@ -1,22 +1,21 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {PostListScreen} from '../views/post/list/PostList';
 import {Image} from 'react-native';
-import {MyPostListScreen} from '../views/post/myList/MyPostList';
-import {ProfileInfoScreen} from '../views/profile/info/ProfileInfo';
 import {Mycolors} from '../theme/AppTheme';
 import {ProfileStackNavigator} from './ProfileStackNavigator';
 import {MyPostStackNavigator} from './MyPostStackNavigator';
 import {PostListStackNavigator} from './PostListStackNavigator';
+import MarvelScreen from '../views/apimarvel/MarvelScreen'; // ✅ Importación corregida
 
 export type TabParamList = {
   PostListStackNavigator: undefined;
   MyPostStackNavigator: undefined;
   ProfileStackNavigator: undefined;
+  MarvelScreen: undefined;
 };
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
-export const TabsNavigator = () => (
+const TabsNavigator = () => (
   <Tab.Navigator
     screenOptions={{
       headerShown: false,
@@ -69,5 +68,23 @@ export const TabsNavigator = () => (
         ),
       }}
     />
+    <Tab.Screen
+      name="MarvelScreen"
+      component={MarvelScreen}
+      options={{
+        title: 'Marvel',
+        tabBarLabel: 'Marvel',
+        tabBarActiveTintColor: 'white',
+        tabBarIcon: () => (
+          <Image
+            source={require('../../../assets/img/info4.png')}
+            style={{height: 25, width: 25}}
+          />
+        ),
+      }}
+    />
   </Tab.Navigator>
 );
+
+// ✅ Exportar por defecto para evitar problemas de importación
+export default TabsNavigator;

@@ -9,6 +9,9 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
+      <meta-data android:name="MARVEL_PUBLIC_KEY" android:value="@string/MARVEL_PUBLIC_KEY"/>
+      <meta-data android:name="MARVEL_PRIVATE_KEY" android:value="@string/MARVEL_PRIVATE_KEY"/>
+
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"

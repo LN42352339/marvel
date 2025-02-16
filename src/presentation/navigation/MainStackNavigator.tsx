@@ -2,7 +2,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {LoginScreen} from '../views/auth/login/Login';
 import {RegisterScreen} from '../views/auth/register/Register';
 import {HomeScreen} from '../views/home/Home';
-import {TabsNavigator} from './TabsNavigator';
+import TabsNavigator from './TabsNavigator'; // ✅ Importación corregida
 
 export type RootStackParamList = {
   LoginScreen: undefined;
@@ -20,11 +20,8 @@ export const MainStackNavigator = () => {
         headerShown: false,
       }}>
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
-
       <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
-
       <Stack.Screen name="TabsNavigator" component={TabsNavigator} />
     </Stack.Navigator>
   );
