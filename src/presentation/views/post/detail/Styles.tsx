@@ -12,7 +12,7 @@ const PostDetailStyles = StyleSheet.create({
   },
   userContainer: {
     flexDirection: 'row',
-    backgroundColor: '#2b2d37',
+    backgroundColor: Mycolors.primary,
     borderRadius: 10,
     margin: 20,
     padding: 15,
@@ -34,12 +34,12 @@ const PostDetailStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   postName: {
-    color: Mycolors.primary,
+    color: 'white',
     fontSize: 19,
     marginLeft: 20,
   },
   categoryContainer: {
-    backgroundColor: '#2b2d37',
+    backgroundColor: Mycolors.primary,
     // width: 120,
     flexDirection: 'row',
     justifyContent: 'center',

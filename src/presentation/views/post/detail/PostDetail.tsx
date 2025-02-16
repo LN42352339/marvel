@@ -40,27 +40,21 @@ export const PostDetailScreen = ({navigation, route}: Props) => {
       </View>
       <Text style={styles.postName}>{post.name}</Text>
       <View style={styles.categoryContainer}>
-        {post.category === 'PLAYSTATION' && (
+        {post.category === 'SUPERHÉROES' && (
           <Image
-            source={require('../../../../../assets/img/icon_ps4.png')}
+            source={require('../../../../../assets/img/icono_cat.png')}
             style={styles.categoryImage}
           />
         )}
-        {post.category === 'XBOX' && (
+        {post.category === 'MARVEL CÓSMICO' && (
           <Image
-            source={require('../../../../../assets/img/icon_xbox.png')}
+            source={require('../../../../../assets/img/cat_2.png')}
             style={styles.categoryImage}
           />
         )}
-        {post.category === 'PC' && (
+        {post.category === 'VILLANOS Y ANTIHÉROES' && (
           <Image
-            source={require('../../../../../assets/img/icon_pc.png')}
-            style={styles.categoryImage}
-          />
-        )}
-        {post.category === 'NINTENDO' && (
-          <Image
-            source={require('../../../../../assets/img/icon_nintendo.png')}
+            source={require('../../../../../assets/img/icono_cat4.png')}
             style={styles.categoryImage}
           />
         )}

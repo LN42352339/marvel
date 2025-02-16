@@ -4,6 +4,7 @@ import {PostListStackParamList} from '../../../navigation/PostListStackNavigator
 import {MyPostStackParamList} from '../../../navigation/MyPostStackNavigator';
 import DI from '../../../../di/ioc';
 import {Post} from '../../../../domain/models/Post';
+import { Mycolors } from '../../../theme/AppTheme';
 
 interface Props {
   post: Post;
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: 300,
-    backgroundColor: '#2b2d37',
+    backgroundColor: Mycolors.primary,
     borderRadius: 15,
     marginTop: 10,
     marginLeft: 20,

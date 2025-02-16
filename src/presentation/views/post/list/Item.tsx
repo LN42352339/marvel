@@ -1,9 +1,11 @@
+import React from 'react';
 import {Image, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {Post} from '../../../../domain/models/Post';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {PostListStackParamList} from '../../../navigation/PostListStackNavigator';
 import DI from '../../../../di/ioc';
 import {like} from '../../../../data/datasource/remote/PostsDataSource';
+import {Mycolors} from '../../../theme/AppTheme';
 
 interface Props {
   post: Post;
@@ -56,10 +58,10 @@ export const PostListItem = ({post, navigation}: Props) => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: 300,
-    backgroundColor: '#2b2d37',
+    height: 340,
+    backgroundColor: Mycolors.primary,
     borderRadius: 15,
-    marginTop: 10,
+    marginTop: 0,
     marginLeft: 20,
     marginRight: 20,
     alignSelf: 'center',
@@ -71,24 +73,22 @@ const styles = StyleSheet.create({
   name: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 20,
     marginLeft: 20,
-    marginTop: 10,
+    marginTop: 0,
   },
   username: {
-    color: 'gray',
+    color: Mycolors.primary,
     marginLeft: 20,
-    marginTop: 10,
+    marginTop: -10,
   },
   description: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 13,
     marginLeft: 20,
-    marginTop: 5,
+    marginTop: -5,
   },
-  infoContainer: {
-    flexDirection: 'row',
-  },
+
   likesContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -97,11 +97,13 @@ const styles = StyleSheet.create({
   like: {
     height: 30,
     width: 30,
+    marginTop: -10,
   },
   likesCounter: {
     color: 'white',
     fontSize: 20,
-    marginRight: 15,
-    marginLeft: 6,
+    marginRight: -250,
+    marginLeft: 10,
+    marginTop: -10,
   },
 });
