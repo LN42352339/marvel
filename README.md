@@ -1,6 +1,6 @@
 ## APLICACION MOVIL PROYECTO – BLOG DE  MARVEL
 
-
+ 
 ### Estructura del Proyecto
 ### Raíz del Proyecto:
 
