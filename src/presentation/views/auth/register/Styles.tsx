@@ -1,11 +1,12 @@
 import {StyleSheet} from 'react-native';
 import {Mycolors} from '../../../theme/AppTheme';
 
-const LoginStyles = StyleSheet.create({
+const Registerstyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Mycolors.background,
   },
+
   headerBackground: {
     backgroundColor: Mycolors.primary, //logo marvel
     width: '100%',
@@ -24,36 +25,46 @@ const LoginStyles = StyleSheet.create({
     padding: 10,
   },
 
-  image: {
-    height: 50,
-    width: 370,
-    marginBottom: 250,
-    padding: 80,
-  },
-
   image2: {
     position: 'absolute',
-    top: 50,
-    height: 220,
-    width: 125,
-    zIndex: 10, // Asegura que esté encima de otros elementos
-  },
-  image3: {
-    position: 'absolute',
-    top: 50,
-    height: 350,
-    width: 500,
-    zIndex: 10, // Asegura que esté encima de otros elementos
+    top: 20,
+    height: 280,
+    width: 305,
+    left: -8,
+    zIndex: 1,
   },
 
   textRegister: {
     width: '100%',
-    fontSize: 12,
+    fontSize: 9,
     textAlign: 'center',
     marginTop: 20,
     marginBottom: 60,
     color: Mycolors.secondary,
   },
+
+  arrow_back_container: {
+    position: 'absolute',
+    top: 5,
+    left: 15,
+  },
+
+  arrow_back: {
+    height: 30,
+    width: 30,
+  },
+
+  prueba: {
+    height: 30,
+    width: 30,
+  },
+
+  overlay: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Fondo blanco semitransparente
+    borderRadius: 10, // Bordes redondeados
+    padding: 16, // Espaciado interno
+    marginVertical: 8, // Espaciado entre elementos
+  },
 });
 
-export default LoginStyles;
+export default Registerstyles;

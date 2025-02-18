@@ -1,29 +1,32 @@
 import {useState} from 'react';
 
-const LoginViewModel = () => {
+const ResgisterViewModel = () => {
   const [error, setError] = useState('');
-
   const [values, setValues] = useState({
+    username: '',
     email: '',
     password: '',
+    confirmPassword: '',
   });
+
+  const register = () => {
+    if (isValidForm()) {
+      console.log('Formulario valido');
+      console.log('Valores', values);
+    }
+  };
 
   const onChange = (prop: string, value: any) => {
     setValues({...values, [prop]: value});
   };
 
-  const login = () => {
-    if (!isValidForm()) {
-      console.log('El formulario es valido');
-
-      console.log('Email', values.email);
-      console.log('Password', values.password);
-    }
-  };
-
   const isValidForm = (): boolean => {
     let reg = /^[\w.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,7}$/;
 
+    if (values.username === '') {
+      setError('El usuario no puede estar vacio');
+      return false;
+    }
     if (values.email === '') {
       setError('El email no puede estar vacio');
       return false;
@@ -40,16 +43,20 @@ const LoginViewModel = () => {
       setError('El email no es valido');
       return false;
     }
+    if (values.password !== values.confirmPassword) {
+      setError('las contraseñas no coinciden');
+      return false;
+    }
     return true;
   };
 
   return {
     ...values,
-    onChange,
-    login,
     error,
+    onChange,
+    register,
     setError,
   };
 };
 
-export default LoginViewModel;
+export default ResgisterViewModel;
